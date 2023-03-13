@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FortodoService } from '../service/fortodo.service';
-import { Itemtodo } from '../interface/itemtodolist';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TodoService } from '../service/todo.service';
 
 @Component({
   selector: 'app-todolist',
@@ -10,65 +9,29 @@ import { Itemtodo } from '../interface/itemtodolist';
 
 export class TodolistComponent implements OnInit {
 
-  constructor(private fortodoService: FortodoService) { }
-
-  // sdf:any = Date.now()
-  // ert = new Date()
-
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-
-    // console.log(this.sdf)
-    // console.log(this.ert)
-  }
-
-  // addTask() {
-  //   this.fortodoService.addTask()
-  // }
-
-  // delTask(i: number) {
-  //   this.tasks[i].remove()
-  //   this.tasks = this.tasks.filter(item => item.index != i)
-  // }
-
-  todolist: Itemtodo[] = [
-    {
-      id: Date.now(),
-      text: 'string',
-      date: new Date(),
-      completed: false
-    },
-    {
-      id: Date.now(),
-      text: 'string string',
-      date: new Date(),
-      completed: true
-    }
-  ]
-
-  createItemtodo(inputText: string): Itemtodo {
-
-    const item: Itemtodo = {
-      id: Date.now(),
-      text: inputText,
-      date: new Date(),
-      completed: false
-    }
-    return item
-  }
+  @Output() OnToggle = new EventEmitter<number>()
 
   inputText: string = ''
 
-  addTask(inputText: string) {
-    this.todolist.push(this.createItemtodo(inputText))
+  constructor(public todoService: TodoService) { }
+
+  ngOnInit(): void {
   }
 
-  changeComplete(item: Itemtodo) {
-    item.completed = !item.completed
-    // item.completed ? false : true
+  addTask() {
+    this.todoService.addTask(this.inputText)
+    this.inputText = ''
   }
 
-  delTask(id: number) {
-    this.todolist = this.todolist.filter(item => item.id != id)
+  // changeComplete(item: Itemtodo) {
+  //   this.todoService.changeComplete(item)
+  // }
+
+  onChange(id: number) {
+    this.OnToggle.emit(id)
   }
+
+  // delTask(id: number) {
+  //   this.todoService.delTask(id)
+  // }
 }

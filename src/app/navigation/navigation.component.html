@@ -3,8 +3,8 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <!-- <a mat-list-item routerLink="add">New</a> -->
-      <a mat-list-item href="todolist">Actual</a>
+      <a mat-list-item routerLink="todolist">Actual</a>
+      <a mat-list-item routerLink="tasks">Complered</a>
       <!-- <a mat-list-item href="done">Done 2</a> -->
     </mat-nav-list>
   </mat-sidenav>
