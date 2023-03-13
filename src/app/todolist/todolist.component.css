@@ -1,0 +1,15 @@
+.example-chip-list {
+    width: 100%;
+  }
+
+  /* .ng-star-inserted{
+    max-width: 95%;
+  } */
+
+  li {
+    color: white;
+  }
+
+  .completed {
+    color: green;
+  }
