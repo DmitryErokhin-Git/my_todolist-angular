@@ -1,25 +1,10 @@
 <body>
 
-  <!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="inputText">
-  </mat-form-field>
-</form> -->
-
   <input id="inp" type="text" [(ngModel)]="inputText" placeholder="New task...">
   <button class="add" type="button" (click)="addTask()" (keydown.enter)="addTask()">addTask</button>
 
-  <!-- <input type="text" [(ngModel)]="inputText"> -->
-  <!-- <button type="button" (click)="addTask()" (keydown.enter)="addTask()">addTask</button> -->
-
-  <!-- todolist {{todoService.todoList | json}} <br> -->
-
-  <!-- <button (click)="dynamicRouter()">Completed</button> -->
-  <!-- <a [routerLink]="['./completed']">tasks</a> -->
-
   <ul *ngIf="todoService.todoList.length; else noTodo">
     <div *ngFor="let item of todoService.todoList; let i = index">
-      <!-- <li *ngIf="!item.completed" [class.completed]="item.completed"> -->
       <li [class.completed]="item.completed">
         <div class="attr">
           <input type="checkbox" [checked]="item.completed"
@@ -27,8 +12,6 @@
           <p> №{{i}} - {{item.date | date: "medium"}}</p>
           <button class="del" type="button" (click)="todoService.delTask(item.id)">del</button>
         </div>
-        <!-- <input type="checkbox" [checked]="item.completed" (click)="item.completed = !item.completed"> -->
-        <!-- <h2 [ngStyle]="{'color' : item.completed ? 'green' : 'red', 'text-decoration' : item.completed ? 'line-through' : 'normal'}">{{item.text}}<button type="button" (click)="delTask(item.id)">delTask</button></h2> -->
         <div class="task">
           <h2>{{item.text}}</h2>
         </div>
@@ -40,16 +23,5 @@
   <ng-template #noTodo>
     <p style="color: 'red'; text-align: center">No tasks</p>
   </ng-template>
-<!-- {{todoService.todoList | json}} -->
-  <!-- <p>
-  Options selected: {{shoes.selectedOptions.selected.length}}
-</p> -->
-
-
-  <!-- <div *ngFor="let item of tasks; let i = index">
-  <div>{{i}} {{item.value}}</div>
-  <button type="button" (click)="delTask(i)">delTask</button>
-</div> jsonUrl-->
-<!-- <button (click)="todoService.getJson()">Добавить новые данные в JSON</button> -->
 
 </body>
