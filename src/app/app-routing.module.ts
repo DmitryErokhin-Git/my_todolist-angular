@@ -12,8 +12,7 @@ const routes: Routes = [
       { path: 'completed', component: TasksComponent }
     ]
   },
-
-  // { path: '**', redirectTo: 'completed' }
+  { path: '**', redirectTo: 'tasks' }
 ];
 
 @NgModule({
