@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs';
 import { Itemtodo } from '../interface/itemtodolist';
 
 @Injectable({
@@ -6,21 +8,23 @@ import { Itemtodo } from '../interface/itemtodolist';
 })
 export class TodoService {
 
-  constructor() { }
+  constructor(
+    // private httpClient: HttpClient
+  ) { }
 
   todoList: Itemtodo[] = [
-    {
-      id: Date.now(),
-      text: 'string',
-      date: new Date(),
-      completed: false
-    },
-    {
-      id: Date.now(),
-      text: 'string string',
-      date: new Date(),
-      completed: true
-    }
+    /*     {
+          id: Date.now(),
+          text: 'string',
+          date: new Date(),
+          completed: false
+        },
+        {
+          id: Date.now(),
+          text: 'string string',
+          date: new Date(),
+          completed: true
+        } */
   ]
 
   addTask(inputText: string) {
@@ -42,4 +46,19 @@ export class TodoService {
     this.todoList = this.todoList.filter(item => item.id != id)
   }
 
+  // getJson() {
+  //   this.httpClient.get<any>('../service/data.json').subscribe(response => console.log(response))
+
+
+  // let subscription = this.httpClient.get<RoomList[]>('http://localhost:3000/rooms').subscribe(roomsSub => this.roomList = roomsSub)
+  // console.log(a)
+  // }
+
+
+
+  // метод для отправки POST-запроса и добавления нового объекта в JSON
+  // addToJson(newData: any): Observable<any> {
+  //   const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  //   return this.httpClient.post<any>('../service/data.json', newData, { headers });
+  // }
 }

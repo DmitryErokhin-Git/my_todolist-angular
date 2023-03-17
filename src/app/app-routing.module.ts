@@ -4,10 +4,16 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TodolistComponent } from './todolist/todolist.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'todolist', pathMatch: 'full' },
-  { path: 'todolist', component: TodolistComponent },
-  { path: 'tasks', component: TasksComponent },
-  { path: '**', redirectTo: 'tasks'}
+  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  {
+    path: 'tasks',
+    children: [
+      { path: '', component: TodolistComponent },
+      { path: 'completed', component: TasksComponent }
+    ]
+  },
+
+  // { path: '**', redirectTo: 'completed' }
 ];
 
 @NgModule({

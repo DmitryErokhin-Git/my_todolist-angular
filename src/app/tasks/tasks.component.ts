@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+// import { Router } from '@angular/router';
 import { TodoService } from '../service/todo.service';
 
 @Component({
@@ -7,15 +8,23 @@ import { TodoService } from '../service/todo.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  
-  @Output() OnToggle = new EventEmitter<number>()
 
-  constructor(public todoService: TodoService) { }
+  // @Output() onToggle = new EventEmitter<number>()
+
+  constructor(
+    public todoService: TodoService,
+    // private router: Router
+  ) { }
 
   ngOnInit() {
   }
-  
-  onChange(id: number) {
-    this.OnToggle.emit(id)
-  }
+
+  // onChange(id: number) {
+  //   this.onToggle.emit(id)
+  // }
+
+  // dynamicRouter() {
+  //   this.router.navigate(['/tasks'])
+  // }
+
 }
