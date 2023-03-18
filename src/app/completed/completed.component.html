@@ -1,0 +1,23 @@
+<body>
+
+  <ul *ngIf="todoService.todoList.length; else noTodo">
+    <div *ngFor="let item of todoService.todoList; let i = index">
+      <li *ngIf="item.completed" [class.completed]="item.completed">
+        <div class="attr">
+          <input type="checkbox" [checked]="item.completed" (click)="todoService.changeComplete(item)">
+          <p> №{{i}} - {{item.date | date: "medium"}}</p>
+          <button class="del" type="button" (click)="todoService.delTask(item.id)">del</button>
+        </div>
+        <div class="task">
+          <h2>{{item.text}}</h2>
+        </div>
+      </li>
+
+    </div>
+  </ul>
+
+  <ng-template #noTodo>
+    <p style="color: 'red'; text-align: center">No tasks</p>
+  </ng-template>
+
+</body>

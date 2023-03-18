@@ -18,7 +18,7 @@ export class TodolistComponent  {
   addTask() {
     if (this.inputText) {
       this.todoService.addTask(this.inputText)
-      this.inputText = ''
+      // this.inputText = ''
     }
   }
 
