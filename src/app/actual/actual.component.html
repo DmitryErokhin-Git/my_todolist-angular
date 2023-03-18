@@ -1,7 +1,5 @@
 <body>
 
-  <!-- <button (click)="dynamicRouter()">Actual</button> -->
-
   <ul *ngIf="todoService.todoList.length; else noTodo">
     <div *ngFor="let item of todoService.todoList; let i = index">
       <li *ngIf="!item.completed" [class.completed]="item.completed">
@@ -10,8 +8,6 @@
           <p> №{{i}} - {{item.date | date: "medium"}}</p>
           <button class="del" type="button" (click)="todoService.delTask(item.id)">del</button>
         </div>
-        <!-- <input type="checkbox" [checked]="item.completed" (click)="item.completed = !item.completed"> -->
-        <!-- <h2 [ngStyle]="{'color' : item.completed ? 'green' : 'red', 'text-decoration' : item.completed ? 'line-through' : 'normal'}">{{item.text}}<button type="button" (click)="delTask(item.id)">delTask</button></h2> -->
         <div class="task">
           <h2>{{item.text}}</h2>
         </div>

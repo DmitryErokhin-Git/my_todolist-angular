@@ -1,14 +1,10 @@
 <body>
 
-  <input id="inp" type="text" [(ngModel)]="inputText" placeholder="New task...">
-  <button class="add" type="button" (click)="addTask()" (keydown.enter)="addTask()">addTask</button>
-
   <ul *ngIf="todoService.todoList.length; else noTodo">
     <div *ngFor="let item of todoService.todoList; let i = index">
-      <li [class.completed]="item.completed">
+      <li *ngIf="item.completed" [class.completed]="item.completed">
         <div class="attr">
-          <input type="checkbox" [checked]="item.completed"
-            (click)="todoService.changeComplete(item)">
+          <input type="checkbox" [checked]="item.completed" (click)="todoService.changeComplete(item)">
           <p> №{{i}} - {{item.date | date: "medium"}}</p>
           <button class="del" type="button" (click)="todoService.delTask(item.id)">del</button>
         </div>

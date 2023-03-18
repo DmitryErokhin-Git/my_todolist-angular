@@ -1,19 +1,22 @@
+import { CompletedComponent } from './completed/completed.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TasksComponent } from './tasks/tasks.component';
+import { ActualComponent } from './actual/actual.component';
+import { ImportExportComponent } from './import-export/import-export.component';
 import { TodolistComponent } from './todolist/todolist.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  { path: '', redirectTo: 'todo', pathMatch: 'full' },
   {
-    path: 'tasks',
+    path: 'todo',
     children: [
       { path: '', component: TodolistComponent },
-      { path: 'completed', component: TasksComponent }
+      { path: 'actual', component: ActualComponent },
+      { path: 'completed', component: CompletedComponent },
     ]
   },
-
-  // { path: '**', redirectTo: 'completed' }
+  { path: 'impex', component: ImportExportComponent },
+  { path: '**', redirectTo: 'todo' }
 ];
 
 @NgModule({
