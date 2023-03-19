@@ -13,21 +13,21 @@ export class IpmexService {
     private todoService: TodoService
   ) { }
 
-  uploadList(event: any) {
+  // uploadList(event: any) {
 
-    let file = event.target.files[0]
+  //   let file = event.target.files[0]
 
-    let fileUpload = new FileReader()
+  //   let fileUpload = new FileReader()
 
-    fileUpload.readAsBinaryString(file)
+  //   fileUpload.readAsBinaryString(file)
 
-    fileUpload.onload = (e) => {
-      var workBook = XLSX.read(fileUpload.result, { type: 'binary' })
-      var sheetNames = workBook.SheetNames
-      console.log(workBook)
-      this.todoService.todoList = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
-    }
-  }
+  //   fileUpload.onload = (e) => {
+  //     var workBook = XLSX.read(fileUpload.result, { type: 'binary' })
+  //     var sheetNames = workBook.SheetNames
+  //     console.log(workBook)
+  //     this.todoService.todoList = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
+  //   }
+  // }
 
   // date = new Date().toString()
 
