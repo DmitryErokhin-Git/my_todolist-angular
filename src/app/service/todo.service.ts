@@ -34,9 +34,9 @@ export class TodoService {
     this.todoList.push(item)
   }
 
-  changeComplete(item: Itemtodo) {
-    item.completed = !item.completed
-  }
+  // changeComplete(item: Itemtodo) {
+  //   item.completed = !item.completed
+  // }
 
   delTask(id: number) {
     this.todoList = this.todoList.filter(item => item.id != id)

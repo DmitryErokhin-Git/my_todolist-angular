@@ -1,5 +1,6 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,6 +16,12 @@ import { TodoService } from './service/todo.service';
 import { CompletedComponent } from './completed/completed.component';
 import { ImportExportComponent } from './import-export/import-export.component';
 import { ActualComponent } from './actual/actual.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatBadgeModule } from '@angular/material/badge';
+import { FileSaverService } from 'ngx-filesaver/src/filesaver.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +41,17 @@ import { ActualComponent } from './actual/actual.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatBadgeModule,
+    RouterModule
   ],
-  providers: [TodoService],
+  providers: [TodoService/* ,
+    FileSaverService */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

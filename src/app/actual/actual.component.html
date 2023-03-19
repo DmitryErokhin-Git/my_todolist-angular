@@ -3,14 +3,21 @@
   <ul *ngIf="todoService.todoList.length; else noTodo">
     <div *ngFor="let item of todoService.todoList; let i = index">
       <li *ngIf="!item.completed" [class.completed]="item.completed">
-        <div class="attr">
-          <input type="checkbox" [checked]="item.completed" (click)="todoService.changeComplete(item)">
-          <p> №{{i}} - {{item.date | date: "medium"}}</p>
-          <button class="del" type="button" (click)="todoService.delTask(item.id)">del</button>
-        </div>
-        <div class="task">
-          <h2>{{item.text}}</h2>
-        </div>
+        <mat-card class="example-card" [class.completed]="item.completed">
+          <mat-card-subtitle class="space-between">
+            <div>
+              <mat-slide-toggle [(ngModel)]="item.completed"></mat-slide-toggle>
+              №{{i+1}} {{item.date | date: "fullDate"}}
+            </div>
+            <div>
+              <button mat-raised-button color="warn" type="button"
+                (click)="todoService.delTask(item.id)">Delete</button>
+            </div>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <h3>{{item.text}}</h3>
+          </mat-card-content>
+        </mat-card>
       </li>
 
     </div>

@@ -1,4 +1,18 @@
-<h1>Import:</h1> <input type="file" name="" id="">
-<hr>
-<h1>Export:</h1> <input type="button" value="Download">
-<hr>
+<div>
+    <!-- <h1>Import: -->
+    <!-- <button mat-stroked-button type="file" color="primary">Primary</button> -->
+    <!-- <hr> -->
+    <!-- <input mat-stroked-button type="file" name="" id=""></h1> -->
+    <!-- <hr> -->
+    <!-- <button mat-stroked-button color="accent">Accent</button> -->
+    <!-- <hr> -->
+    <h1>Click to export the list <!-- <input type="button" value="Download"> -->
+        <!-- <hr> -->
+        <!-- <div class="file-upload"> -->
+        <!-- {{fileName || "No file uploaded yet."}} -->
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.uploadList()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <!-- </div> -->
+    </h1>
+</div>

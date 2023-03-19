@@ -1,3 +1,4 @@
+import { IpmexService } from './../service/ipmex.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportExportComponent implements OnInit {
 
-  constructor() { }
+  // jsonData = [
+  //   {
+  //     "id": 0,
+  //     "name": 'Dima',
+  //     "text": 'My text'
+  //   },
+  //   {
+  //     "id": 1,
+  //     "name": 'Nastia',
+  //     "text": 'Her text'
+  //   }
+  // ]
+
+  constructor(public ipmexService:IpmexService) { }
 
   ngOnInit() {
   }
+
 
 }
