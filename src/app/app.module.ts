@@ -21,7 +21,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
-// import { FileSaverService } from 'ngx-filesaver/src/filesaver.service';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 @NgModule({
@@ -44,12 +43,12 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatListModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule,
+    // ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
     MatSlideToggleModule,
-    MatBadgeModule,
-    RouterModule,
+    // MatBadgeModule,
+    // RouterModule,
     NgxMatFileInputModule
   ],
   providers: [TodoService/* ,
