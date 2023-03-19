@@ -21,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
-import { FileSaverService } from 'ngx-filesaver/src/filesaver.service';
+// import { FileSaverService } from 'ngx-filesaver/src/filesaver.service';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FileSaverService } from 'ngx-filesaver/src/filesaver.service';
     MatCardModule,
     MatSlideToggleModule,
     MatBadgeModule,
-    RouterModule
+    RouterModule,
+    NgxMatFileInputModule
   ],
   providers: [TodoService/* ,
     FileSaverService */],

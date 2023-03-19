@@ -2,11 +2,11 @@
 
   <mat-form-field class="example-full-width" style="width: 100%; margin-top: 1%;">
     <mat-label>Create task</mat-label>
-    <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}">
+    <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}" (keydown.enter)="addTask()">
   </mat-form-field>
 
   <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 1%;" type="button" (click)="addTask()"
-    (keydown.enter)="addTask()">Add new task</button>
+    >Add new task</button>
 
   <ul *ngIf="todoService.todoList.length; else noTodo">
     <div *ngFor="let item of todoService.todoList; let i = index">
