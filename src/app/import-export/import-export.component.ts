@@ -1,3 +1,4 @@
+import { TodoService } from './../service/todo.service';
 import { IpmexService } from './../service/ipmex.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,7 +22,10 @@ export class ImportExportComponent implements OnInit {
   //   }
   // ]
 
-  constructor(public ipmexService:IpmexService) { }
+  constructor(
+    public ipmexService: IpmexService,
+    public todoService:TodoService
+  ) { }
 
   ngOnInit() {
   }

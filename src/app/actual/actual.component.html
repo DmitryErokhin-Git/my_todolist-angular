@@ -6,7 +6,7 @@
         <mat-card class="example-card" [class.completed]="item.completed">
           <mat-card-subtitle class="space-between">
             <div>
-              <mat-slide-toggle [(ngModel)]="item.completed"></mat-slide-toggle>
+              <mat-slide-toggle [checked]="item.completed" (change)="this.todoService.changeComplete(item)"></mat-slide-toggle>
               №{{i+1}} {{item.date | date: "fullDate"}}
             </div>
             <div>

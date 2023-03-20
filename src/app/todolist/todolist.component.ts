@@ -9,7 +9,7 @@ import { TodoService } from '../service/todo.service';
 
 export class TodolistComponent  {
 
-  inputText: string = 'Task text'
+  inputText: string = ''
 
   constructor(
     public todoService: TodoService,
@@ -18,7 +18,7 @@ export class TodolistComponent  {
   addTask() {
     if (this.inputText) {
       this.todoService.addTask(this.inputText)
-      // this.inputText = ''
+      this.inputText = ''
     }
   }
 

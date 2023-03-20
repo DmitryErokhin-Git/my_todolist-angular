@@ -13,21 +13,29 @@ export class IpmexService {
     private todoService: TodoService
   ) { }
 
-  // uploadList(event: any) {
+  fileName:any
 
-  //   let file = event.target.files[0]
+  uploadList(event: any) {
 
-  //   let fileUpload = new FileReader()
+    let file = event.target.files[0]
 
-  //   fileUpload.readAsBinaryString(file)
+    this.fileName = file.name;
 
-  //   fileUpload.onload = (e) => {
-  //     var workBook = XLSX.read(fileUpload.result, { type: 'binary' })
-  //     var sheetNames = workBook.SheetNames
-  //     console.log(workBook)
-  //     this.todoService.todoList = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
-  //   }
-  // }
+    let fileUpload = new FileReader()
+
+    fileUpload.readAsBinaryString(file)
+
+    fileUpload.onload = (e) => {
+      var workBook = XLSX.read(fileUpload.result, { type: 'binary' })
+      var sheetNames = workBook.SheetNames
+      console.log(workBook)
+      this.todoService.todoList = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
+    }
+
+    // alert(this.fileName + ' was successfully uploaded')
+    // this.todoService.saveLocal()
+    // this.todoService.loadLocal()
+  }
 
   // date = new Date().toString()
 
@@ -50,4 +58,5 @@ export class IpmexService {
 
     this.fileSaverService.save(blobData, "Task list")
   }
+
 }

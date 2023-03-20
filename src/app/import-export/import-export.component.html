@@ -1,18 +1,37 @@
 <div>
 
+    <h1>Import from Excel
 
+        <input hidden type="file" class="file-input" #fileUpload (input)="ipmexService.uploadList($event)">
 
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+            <mat-icon>upload_file</mat-icon>
+        </button>
 
-    <mat-form-field style="width: 100%">
+        <!-- {{ipmexService.fileName || "[select a file]"}} -->
 
-        <h1>Export to Excel
-            <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadList()">
-                <mat-icon>download_file</mat-icon>
-            </button>
-        </h1>
-    </mat-form-field>
+        <button mat-button color="accent" type="button" (click)="todoService.saveLocal()">Save to
+            localStorage</button>
+    </h1>
 
-    <!-- <hr> -->
+    <!-- <div *ngIf="!ipmexService.fileName" style="color: red;">
+        Select the file to download
+    </div> -->
 
+    <div *ngIf="ipmexService.fileName" style="color: green;">
+        {{ipmexService.fileName}} was successfully uploaded
+    </div>
+
+    <hr>
+
+    <br>
+
+    <h1>Export to Excel
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadList()">
+            <mat-icon>download_file</mat-icon>
+        </button>
+        <button mat-button color="warn" type="button" (click)="todoService.cleanLocal()">Clean
+            localStorage</button>
+    </h1>
 
 </div>
