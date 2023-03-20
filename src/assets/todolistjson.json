@@ -1,0 +1,14 @@
+[
+    {
+        "id": "string",
+        "text": "string",
+        "date": "string",
+        "completed": false
+    },
+    {
+        "id": "string string",
+        "text": "string string",
+        "date": "string string",
+        "completed": true
+    }
+]

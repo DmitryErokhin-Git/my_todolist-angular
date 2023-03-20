@@ -5,17 +5,69 @@
     <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}" (keydown.enter)="addTask()">
   </mat-form-field>
 
-  <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 1%;" type="button" (click)="addTask()"
-    >Add new task</button>
+  <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 1%;" type="button" (click)="addTask()">
+    Add new task</button>
+
+
+      <!-- <hr>
+  {{this.todoService.todoList | select:selected | json}}
+  <hr> -->
+  <!-- <select name="" id="" (change)="changeSelect($event)"> -->
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option *ngFor="let item of completed; let i = index" [value]="selected">
+        <mat-option value="{{completed[i].status}}">{{completed[i].key}}</mat-option>
+      </mat-option>
+      <!-- <mat-option value="all">ALL</mat-option>
+      <mat-option value="false">ACTUAL</mat-option>
+      <mat-option value="true">COMPLETED</mat-option> -->
+    </mat-select>
+  </mat-form-field>
+  <!-- {{selected}} -->
+  <!-- <p>You selected: {{selected}}</p> -->
+
+
+  <mat-form-field class="example-full-width" style="width: 60%; margin-top: 1%; margin-left: 2%;">
+    <mat-label>Filter</mat-label>
+    <input matInput [(ngModel)]="filter" placeholder="Enter a request" value="{{filter}}" (keydown.esc)="filter = ''">
+    <!-- <button mat-raised-button color="warn" type="button" (click)="filter = ''">Clean</button> -->
+  </mat-form-field>
+  <!-- <h4>Filter</h4> -->
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option *ngFor="let item of completed; let i = index" [value]="selected">
+        <mat-option value="{{completed[i].status}}">{{completed[i].key}}</mat-option>
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+
+
+
+
+  <!-- <select name="" id="" [(value)]="selected">
+    <option value="all">all</option>
+    <option value="actual">actual</option>
+    <option value="completed">completed</option>
+  </select>
+  <hr>
+  {{selected}} -->
+  <!-- <hr> -->
+  <!-- <button (click)="selected = 'Actual'">true</button> -->
+  <!-- <button (click)="selected = false">false</button> -->
 
   <ul *ngIf="todoService.todoList.length; else noTodo">
-    <div *ngFor="let item of todoService.todoList; let i = index">
-      <li>
+    <div>
 
+      <!-- <li *ngIf="item.completed == selected"> -->
+      <li *ngFor="let item of todoService.todoList | filter:filter | select:selected; let i = index">
         <mat-card class="example-card" [class.completed]="item.completed">
           <mat-card-subtitle class="space-between">
             <div>
-              <mat-slide-toggle [checked]="item.completed" (change)="this.todoService.changeComplete(item)"></mat-slide-toggle>
+              <mat-slide-toggle [checked]="item.completed"
+                (change)="this.todoService.changeComplete(item)"></mat-slide-toggle>
               №{{i+1}} {{item.date | date: "fullDate"}}
             </div>
             <div>

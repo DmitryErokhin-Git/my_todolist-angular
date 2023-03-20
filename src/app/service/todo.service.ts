@@ -29,7 +29,7 @@ export class TodoService {
   addTask(inputText: string) {
     const item: Itemtodo = {
       id: Date.now(),
-      text: inputText,
+      text: inputText.trim(),
       date: new Date(),
       completed: false
     }

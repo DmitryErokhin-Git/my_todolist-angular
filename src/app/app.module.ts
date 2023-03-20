@@ -22,15 +22,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SelectPipe } from './pipes/select.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     TodolistComponent,
-    CompletedComponent,
+    // CompletedComponent,
     ImportExportComponent,
-    ActualComponent
+    // ActualComponent,
+    SelectPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,10 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatSlideToggleModule,
     // MatBadgeModule,
     // RouterModule,
-    NgxMatFileInputModule
+    NgxMatFileInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [TodoService/* ,
     FileSaverService */],

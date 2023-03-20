@@ -34,4 +34,26 @@
             localStorage</button>
     </h1>
 
+    <mat-form-field appearance="fill">
+        <mat-label>dataStart</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dataStart">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    {{dataStart}}
+
+    <hr>
+
+    <mat-form-field appearance="fill">
+        <mat-label>dataEnd</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dataEnd">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    {{dataEnd}}
+
 </div>
