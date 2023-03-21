@@ -1,14 +1,28 @@
 <body>
 
-  <mat-form-field class="example-full-width" style="width: 100%; margin-top: 1%;">
-    <mat-label>Create task</mat-label>
-    <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}" (keydown.enter)="addTask()">
-  </mat-form-field>
-
-  <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 1%;" type="button" (click)="addTask()">
+  <div class="gridForm1">
+    <div style="margin-right: 2%;">
+      <mat-form-field class="example-full-width" style="box-sizing: border-box; width: 100%">
+        <mat-label>Create task</mat-label>
+        <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}"
+          (keydown.enter)="addTask()">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" style="box-sizing: border-box; width: 100%">
+        <mat-label>dataAdd</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <!-- {{todoService.addData}} -->
+    </div>
+  </div>
+  <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 3%;" type="button" (click)="addTask()">
     Add new task</button>
 
-  <div class="gridForm">
+  <div class="gridForm2">
     <div>
       <!-- <hr>
   {{this.todoService.todoList | select:selected | json}}
@@ -29,7 +43,7 @@
       <!-- <p>You selected: {{selected}}</p> -->
     </div>
 
-    <div style="margin: 0 2% 0 2%">
+    <div style="margin: 0 0 0 2%">
       <mat-form-field class="example-full-width" style="box-sizing: border-box; width: 100%">
         <mat-label>Filter</mat-label>
         <input matInput [(ngModel)]="filter" placeholder="Enter a request" value="{{filter}}"
@@ -59,15 +73,6 @@
       <!-- <button (click)="selected = false">false</button> -->
     </div>
 
-    <div>
-      <mat-form-field appearance="fill" style="box-sizing: border-box; width: 100%">
-        <mat-label>dataAdd</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
   </div>
 
 

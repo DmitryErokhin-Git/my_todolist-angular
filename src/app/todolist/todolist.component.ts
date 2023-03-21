@@ -1,7 +1,7 @@
 import { IpmexService } from './../service/ipmex.service';
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../service/todo.service';
-import * as todolistjson from '../../assets/todolistjson.json';
+// import * as todolistjson from '../../assets/json/todolistjson.json';
 // import * as fs from 'node:fs';
 
 @Component({

@@ -31,10 +31,11 @@ export class IpmexService {
     fileUpload.onload = (e) => {
       var workBook = XLSX.read(fileUpload.result, { type: 'binary' })
       var sheetNames = workBook.SheetNames
-      console.log(workBook)
+      // console.log(workBook)
       this.todoService.todoList = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
     }
 
+    // this.todoService.saveLocal()
     // alert(this.fileName + ' was successfully uploaded')
     // this.todoService.saveLocal()
     // this.todoService.loadLocal()
@@ -87,7 +88,7 @@ export class IpmexService {
         if (itemDate.getMonth() == this.selectDate.getMonth()) {
           if (itemDate.getDate() == this.selectDate.getDate()) {
 
-            console.log(itemDate.getDate() + '    подходит')
+            // console.log(itemDate.getDate() + '    подходит')
             // console.log('selectDate ' + this.selectDate.getDate())
             return item
           }

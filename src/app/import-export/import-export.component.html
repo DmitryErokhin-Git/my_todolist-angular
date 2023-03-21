@@ -1,4 +1,5 @@
 <div>
+    <hr>
 
     <h1>Import from Excel
 
@@ -15,8 +16,8 @@
     </h1>
 
     <!-- <div *ngIf="!ipmexService.fileName" style="color: red;">
-        Select the file to download
-    </div> -->
+    Select the file to download
+</div> -->
 
     <div *ngIf="ipmexService.fileName" style="color: green;">
         {{ipmexService.fileName}} was successfully uploaded
@@ -24,7 +25,29 @@
 
     <hr>
 
-    <br>
+    <h1>Exporting tasks for the selected day to Excel
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadListOneDay()">
+            <mat-icon>download_file</mat-icon>
+        </button>
+    </h1>
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>dataDownload</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="ipmexService.selectDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+
+    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+
+    <mat-card class="demo-inline-calendar-card" style="max-height: 30%;">
+        <mat-calendar [(selected)]="ipmexService.selectDate"></mat-calendar>
+    </mat-card>
+
+    <!-- <hr> -->
+
+    <!-- {{ipmexService.selectDate}} -->
+
+    <hr>
 
     <h1>Export all tasks to Excel
         <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadList()">
@@ -36,21 +59,5 @@
 
     <hr>
 
-    <h1>Exporting tasks for the selected day to Excel</h1>
-    <mat-form-field appearance="fill">
-        <mat-label>dataDownload</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="ipmexService.selectDate">
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <!-- <hr> -->
-
-    <!-- {{ipmexService.selectDate}} -->
-    <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadListOneDay()">
-        <mat-icon>download_file</mat-icon>
-    </button>
-
-    <hr>
+    <!-- <br> -->
 </div>

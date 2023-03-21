@@ -31,7 +31,12 @@ ul {
   padding: 1%;
 }
 
-.gridForm{
+.gridForm1 {
   display: grid;
-grid-template-columns: 25% auto 25%;
+  grid-template-columns: auto 25%;
+}
+
+.gridForm2 {
+  display: grid;
+  grid-template-columns: 25% auto;
 }

@@ -54,7 +54,6 @@ export class TodoService {
     this.saveLocal()
   }
 
-
   saveLocal() {
     const saveJson = JSON.stringify(this.todoList)
     // console.log(saveJson)

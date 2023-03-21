@@ -25,8 +25,8 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { SelectPipe } from './pipes/select.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+import { SelectPipe } from './pipe/select.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
