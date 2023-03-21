@@ -26,11 +26,14 @@ export class TodoService {
         } */
   ]
 
+  addData = new Date()
+
   addTask(inputText: string) {
     const item: Itemtodo = {
       id: Date.now(),
       text: inputText.trim(),
-      date: new Date(),
+      // date: new Date(),
+      date: this.addData,
       completed: false
     }
     this.todoList.push(item)

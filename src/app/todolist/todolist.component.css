@@ -30,3 +30,8 @@ ul {
   justify-content: space-between;
   padding: 1%;
 }
+
+.gridForm{
+  display: grid;
+grid-template-columns: 25% auto 25%;
+}

@@ -26,7 +26,7 @@
 
     <br>
 
-    <h1>Export to Excel
+    <h1>Export all tasks to Excel
         <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadList()">
             <mat-icon>download_file</mat-icon>
         </button>
@@ -34,26 +34,23 @@
             localStorage</button>
     </h1>
 
-    <mat-form-field appearance="fill">
-        <mat-label>dataStart</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="dataStart">
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    {{dataStart}}
-
     <hr>
 
+    <h1>Exporting tasks for the selected day to Excel</h1>
     <mat-form-field appearance="fill">
-        <mat-label>dataEnd</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="dataEnd">
+        <mat-label>dataDownload</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="ipmexService.selectDate">
         <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    {{dataEnd}}
+    <!-- <hr> -->
 
+    <!-- {{ipmexService.selectDate}} -->
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="ipmexService.downloadListOneDay()">
+        <mat-icon>download_file</mat-icon>
+    </button>
+
+    <hr>
 </div>

@@ -21,16 +21,13 @@ export class ImportExportComponent implements OnInit {
   //     "text": 'Her text'
   //   }
   // ]
-  dataStart = new Date
-  dataEnd = new Date
-  
+
   constructor(
     public ipmexService: IpmexService,
-    public todoService:TodoService
+    public todoService: TodoService
   ) { }
 
   ngOnInit() {
   }
-
 
 }
