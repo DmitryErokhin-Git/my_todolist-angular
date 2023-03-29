@@ -21,6 +21,10 @@
   color: red;
 }
 
-/* .mat-nav-list a.active {
+.mat-nav-list a.active {
   background: blue;
-} */
+}
+
+.active-link {
+  background-color: #7b1fa2;
+}

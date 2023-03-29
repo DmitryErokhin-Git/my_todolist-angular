@@ -1,38 +1,53 @@
 <body>
 
-  <div class="gridForm1" style="margin-top: 2%;">
-    <div style="margin-right: 2%;">
-      <mat-form-field class="example-full-width" style="box-sizing: border-box; width: 100%">
-        <mat-label>Create task</mat-label>
-        <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}"
-          (keydown.enter)="addTask()">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill" style="box-sizing: border-box; width: 100%">
-        <mat-label>dataAdd</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <!-- {{todoService.addData}} -->
-    </div>
-  </div>
-  <button mat-raised-button color="accent" style="width: 100%; margin-bottom: 3%;" type="button" (click)="addTask()">
-    Add new task</button>
+  <!-- ADD -->
+  <div>
+    <div class="gridForm1">
 
+      <!-- ADD INPUT -->
+      <div class="addInput">
+        <mat-form-field class="example-full-width">
+          <mat-label>Create task</mat-label>
+          <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}"
+            (keydown.enter)="addTask()">
+        </mat-form-field>
+      </div>
+
+      <!-- ADD DATE-->
+      <div>
+        <mat-form-field appearance="fill" calss="example-full-width addDatePicker" style="display: flex">
+          <mat-label>Date new task</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
+          <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!-- {{todoService.addData}} -->
+      </div>
+
+    </div>
+
+    <!-- ADD BUTTON-->
+    <div>
+      <button mat-raised-button color="accent" class="buttonAdd" type="button" (click)="addTask()">
+        Add new task</button>
+    </div>
+
+  </div>
+
+  <!-- FILTER -->
   <div class="gridForm2">
+    <!-- SELECTOR -->
     <div>
       <!-- <hr>
   {{this.todoService.todoList | select:selected | json}}
   <hr> -->
       <!-- <select name="" id="" (change)="changeSelect($event)"> -->
-      <mat-form-field style="box-sizing: border-box; width: 100%">
+      <mat-form-field class="example-full-width">
         <mat-label>Status</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option *ngFor="let item of completed; let i = index" [value]="selected">
-            <mat-option value="{{completed[i].status}}">{{completed[i].key}}</mat-option>
+        <mat-select [(value)]="todoService.selected" (selectionChange)="todoService.createSelectArray()">
+          <mat-option *ngFor="let item of completed; let i = index" value="{{completed[i].status}}">
+            {{completed[i].key}}
           </mat-option>
           <!-- <mat-option value="all">ALL</mat-option>
       <mat-option value="false">ACTUAL</mat-option>
@@ -43,8 +58,9 @@
       <!-- <p>You selected: {{selected}}</p> -->
     </div>
 
-    <div style="margin-left: 2%">
-      <mat-form-field class="example-full-width" style="box-sizing: border-box; width: 100%">
+    <!-- FILTER INPUT -->
+    <div class="filterinput">
+      <mat-form-field class="example-full-width">
         <mat-label>Filter</mat-label>
         <input matInput [(ngModel)]="filter" placeholder="Enter a request" value="{{filter}}"
           (keydown.esc)="filter = ''">
@@ -72,21 +88,21 @@
       <!-- <button (click)="selected = 'Actual'">true</button> -->
       <!-- <button (click)="selected = false">false</button> -->
     </div>
-
   </div>
 
-
-  <ul *ngIf="todoService.todoList.length; else noTodo">
-    <div>
-
+  <!-- TASKS -->
+  <div *ngIf="!this.todoService.loading">
+    <ul *ngIf="this.todoService.selectedArr.length; else noTodo">
+      <!-- <ul *ngIf="todoService.todoList.length; else noTodo"> -->
       <!-- <li *ngIf="item.completed == selected"> -->
-      <li *ngFor="let item of todoService.todoList | filter:filter | select:selected; let i = index">
+      <!-- <li *ngFor="let item of todoService.todoList | filter:filter | select:todoService.selected; let i = index"> -->
+      <li *ngFor="let item of this.todoService.selectedArr | filter:filter; let i = index">
         <mat-card class="example-card" [class.completed]="item.completed">
           <mat-card-subtitle class="space-between">
             <div>
               <mat-slide-toggle [checked]="item.completed"
                 (change)="this.todoService.changeComplete(item)"></mat-slide-toggle>
-              №{{i+1}} {{item.date | date: "fullDate"}}
+              №{{i+1}} {{item.date | date: "d MMMM yyyy, HH:mm:ss"}}
             </div>
             <div>
               <button mat-raised-button color="warn" type="button"
@@ -98,12 +114,23 @@
           </mat-card-content>
         </mat-card>
       </li>
+    </ul>
 
-    </div>
-  </ul>
+    <!-- NO TASKS -->
+    <ng-template #noTodo>
+      <p class="notodo">No tasks</p>
+    </ng-template>
+  </div>
 
-  <ng-template #noTodo>
-    <p style="color: 'red'; text-align: center">No tasks</p>
-  </ng-template>
+  <!-- LOADING -->
+  <div *ngIf="this.todoService.loading" class="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <!-- <p>Loading...</p> -->
+  </div>
+
+  <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator> -->
+
+
 
 </body>

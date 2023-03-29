@@ -7,6 +7,7 @@ import { Itemtodo } from '../interface/itemtodolist';
 export class SelectPipe implements PipeTransform {
 
   transform(todolist: Itemtodo[], select?: string | undefined): Itemtodo[] {
+    console.log(todolist)
     if (select == 'Actual') {
       return todolist.filter(item => { return item.completed == false })
     }

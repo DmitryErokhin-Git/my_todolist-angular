@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.todoService.loadLocal()
+    // this.todoService.loadLocal()
 
     window.addEventListener('storage', event => {
       console.log(event)

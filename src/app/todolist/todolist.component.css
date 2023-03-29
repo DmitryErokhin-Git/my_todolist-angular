@@ -34,9 +34,43 @@ ul {
 .gridForm1 {
   display: grid;
   grid-template-columns: auto 25%;
+  margin-top: 2%
 }
 
 .gridForm2 {
   display: grid;
   grid-template-columns: 25% auto;
 }
+
+.addInput {
+  margin-right: 2%
+}
+
+.example-full-width {
+  box-sizing: border-box;
+  width: 100%
+}
+
+.addDatePicker {
+  display: flex !important
+}
+
+.buttonAdd {
+  width: 100%;
+  margin-bottom: 3%
+}
+
+.filterinput {
+  margin-left: 2%
+}
+
+.notodo {
+  color: red;
+  text-align: center
+}
+
+.loading p {
+  color: green;
+  text-align: center
+}
+
