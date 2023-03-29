@@ -53,26 +53,17 @@ export class IpmortExportService {
           ),
           completed: todoListImport[i].completed,
         }
+
       }
-      // console.log(this.todoService.todoList)
+
     }
 
   }
-
-  // range = new FormGroup({
-  //   start: new FormControl<Date>(new Date()),
-  //   end: new FormControl<Date>(new Date()),
-  // });
-
-  // selectStart =  this.range.value.start
 
   selectStartDate =  new Date()
   selectEndDate = new Date()
 
   downloadListSelected() {
-    // console.log(typeof this.selectStart)
-
-    // console.log(this.selectStart)
 
     const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 
@@ -92,8 +83,6 @@ export class IpmortExportService {
       return null
     })
 
-    // console.log(todoListExport)
-
     const todoListExportDataString: any[] = []
 
     for (let i = 0; i < todoListExport.length; i++) {
@@ -104,8 +93,6 @@ export class IpmortExportService {
         completed: todoListExport[i].completed,
       }
     }
-
-    // console.log(todoListExportDataString)
 
     const worksheet = XLSX.utils.json_to_sheet(todoListExportDataString)
 
@@ -123,7 +110,6 @@ export class IpmortExportService {
     if (todoListExportDataString.length) {
       this.fileSaverService.save(blobData, "Tasks for selected days")
     } else {
-      // alert('No tasks on this day')
       this.openSnackBar('No tasks these days', 'OK')
     }
   }
@@ -159,11 +145,9 @@ export class IpmortExportService {
     if (todoListExportDataString.length) {
       this.fileSaverService.save(blobData, "Full tasklist")
     } else {
-      // alert('No tasks on this day')
       this.openSnackBar('No tasks', 'OK')
     }
     
-
   }
 
 }

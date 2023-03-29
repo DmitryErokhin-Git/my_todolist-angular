@@ -47,45 +47,32 @@ export class TodolistComponent implements OnInit {
 
     // this.GetObservable()
 
-    // this.dataObservable.subscribe((res: any) => {
-    //   console.log(res)
-    // }, (error: any) => {
-    //   console.log("error.massage")
-    // }, () => {
-    //   console.log("Comlpeted")
-    // })
-
+    /*     this.dataObservable.subscribe((res: any) => {
+          console.log(res)
+        }, (error: any) => {
+          console.log("error.massage")
+        }, () => {
+          console.log("Comlpeted")
+        }) */
 
     // this.pull()
 
-    // this.todoListobs$.subscribe((sub: any) => {
-    //   console.log(sub)
-    //   // console.log(res)
-    // }, (error: any) => {
-    //   console.log("error.massage")
-    // }, () => {
-    //   console.log("Comlpeted")
-    // })
+    /*     this.todoListobs$.subscribe((sub: any) => {
+          console.log(sub)
+          // console.log(res)
+        }, (error: any) => {
+          console.log("error.massage")
+        }, () => {
+          console.log("Comlpeted")
+        }) */
+
+    this.todoService.createSelectArray()
 
     setTimeout(() => {
       this.todoService.loading = false
     }, 700);
 
-    this.todoService.createSelectArray()
-
-
-
   }
-
-  stream$ = this.todoService.todoListObs$.subscribe({
-    next: v => v
-    // complete: () => console.log('Complete')
-  })
-
-  // stream$ = this.todoService.arr$.subscribe({
-  //   next: v => console.log(v),
-  //   // complete: () => console.log('Complete')
-  // })
 
   addTask() {
     if (this.inputText) {
@@ -102,21 +89,31 @@ export class TodolistComponent implements OnInit {
 
   filter = ''
 
-  // change(status: string) {
-  //   this.selected = status
-  // }
+  /*   change(status: string) {
+      this.selected = status
+    } */
 
-
-  // changeSelect(event: any) {
-  //   // console.log(event.target.value)
-  //   return this.selected = event.target.value
-  // }
+  /*   changeSelect(event: any) {
+      // console.log(event.target.value)
+      return this.selected = event.target.value
+    } */
 
   // todolistTimeout:any = []
 
-  // subscription = this.todoService.todolistTimeout$.subscribe((sub) => {
-  //   // console.log(sub)
-  //   this.todolistTimeout = sub
-  // })
+  /*   subscription = this.todoService.todolistTimeout$.subscribe((sub) => {
+      // console.log(sub)
+      this.todolistTimeout = sub
+    }) */
+
+  stream$ = this.todoService.todoListObs$.subscribe({
+    next: v => v
+    // complete: () => console.log('Complete')
+  })
+
+  /*   stream$ = this.todoService.arr$.subscribe({
+      next: v => console.log(v),
+      // complete: () => console.log('Complete')
+    }) */
+
 }
 
