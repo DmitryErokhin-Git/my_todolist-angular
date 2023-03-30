@@ -16,16 +16,19 @@ export class AppComponent implements OnInit {
 
     // this.todoService.loadLocal()
 
+    //синхранизация вкладок
+
     window.addEventListener('storage', event => {
-      console.log(event)
+      // console.log(event)
       const raw: any = event.newValue
       const update: any = JSON.parse(raw)
       this.todoService.todoList = update
       // this.savetolocalstorageService.saveLocal()
       // this.savetolocalstorageService.loadLocal()
-
     })
+
   }
 
   title = 'my todolist angular';
+
 }

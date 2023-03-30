@@ -14,21 +14,26 @@ export class TodoService implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
   }
 
   todoList: Itemtodo[] = [
     {
-      id: 1679915426658,
+      id: 1679915426657,
       text: 'string',
       date: new Date(),
       completed: false
     },
     {
-      id: 1679915426659,
-      text: 'string string',
+      id: 1679915426658,
+      text: 'string 2',
       date: new Date(),
       completed: true
+    },
+    {
+      id: 1679915426659,
+      text: 'string 3',
+      date: new Date(),
+      completed: false
     }
   ]
 
@@ -55,11 +60,11 @@ export class TodoService implements OnInit {
 
   delTask(id: number) {
     this.todoList = this.todoList.filter(item => item.id != id)
-    // this.savetolocalstorageService.saveLocal()
     // this.saveLocal()
     this.createSelectArray()
   }
 
+  //localstaroge
   saveLocal() {
     const saveJson = JSON.stringify(this.todoList)
     // console.log(saveJson)
@@ -73,37 +78,16 @@ export class TodoService implements OnInit {
     // console.log(loadJson)
     this.todoList = JSON.parse(loadJson)
     // console.log(this.data)
-
-    // window.addEventListener('storage', event => {
-    //   console.log(event)
-    // })
   }
 
   cleanLocal() {
     this.todoList = []
-    // this.saveLocal()
+    this.saveLocal()
   }
-
-  arr$ = of(this.todoList)
-
-  todoListObs$ = new Observable((observer: any) => {
-
-    for (let i = 0; i < this.todoList.length; i++) {
-      // setTimeout(() => { observer.next(this.todoList[i]) }, 1000 * i);
-      observer.next(this.todoList[i])
-    }
-  })
-
-
-  // todolistTimeout$ = new Observable((observ) => {
-  //   observ.next(this.loading = true)
-  //   setTimeout(() => { observ.next(this.loading = false) }, 1500)
-  //   setTimeout(() => { observ.next(this.todoList) }, 1500)
-  //   setTimeout(() => { observ.complete() }, 1500)
-  // })
 
   loading = true
 
+  //selector
   selected = 'All'
 
   selectPipe = new SelectPipe();
@@ -112,4 +96,23 @@ export class TodoService implements OnInit {
   createSelectArray() {
     this.selectedArr = this.selectPipe.transform(this.todoList, this.selected);
   }
+
+  //async
+  // arr$ = of(this.todoList).subscribe(sub => sub)
+
+ /*  todoListObs$ = new Observable((observer: any) => {
+
+    for (let i = 0; i < this.todoList.length; i++) {
+      // setTimeout(() => { observer.next(this.todoList[i]) }, 1000 * i);
+      observer.next(this.todoList[i])
+    }
+  }) */
+
+    todolistTimeout$ = new Observable((observ) => {
+      // observ.next(this.loading = true)
+      // setTimeout(() => { observ.next(this.loading = false) }, 700)
+      setTimeout(() => { observ.next(this.todoList) }, 700)
+      // setTimeout(() => { observ.complete() }, 1500)
+    })
+
 }

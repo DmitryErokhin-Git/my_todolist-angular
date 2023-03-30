@@ -74,3 +74,6 @@ ul {
   text-align: center
 }
 
+mat-accordion button {
+  margin-right: 1%;
+}

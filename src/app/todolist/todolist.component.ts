@@ -1,12 +1,15 @@
+// import { Itemtodo } from './../interface/itemtodolist';
 import { IpmortExportService } from '../service/import-export';
 import { Component, OnInit, Output } from '@angular/core';
 import { TodoService } from '../service/todo.service';
 import { SendingtheobservedService } from '../service/sendingtheobserved.service';
-import { map, Observable } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 import { Itemtodo } from '../interface/itemtodolist';
 import { SelectPipe } from '../pipe/select.pipe';
-// import * as todolistjson from '../../assets/json/todolistjson.json';
+
 // import * as fs from 'node:fs';
+// JSON
+// import * as todolistjson from '../../assets/json/todolistjson.json';
 
 @Component({
   selector: 'app-todolist',
@@ -39,12 +42,23 @@ export class TodolistComponent implements OnInit {
     public ipmexService: IpmortExportService,
     public sendingtheobservedService: SendingtheobservedService
   ) { }
-
+  
   ngOnInit(): void {
+
+    // JSON
     // this.mytodolistjson = (todolistjson as any).default;
     // this.mytodolistjson = this.newdata
     // console.log(this.mytodolistjson)
 
+    //selector
+    this.todoService.createSelectArray()
+
+    //loading
+    setTimeout(() => {
+      this.todoService.loading = false
+    }, 700);
+
+    //async
     // this.GetObservable()
 
     /*     this.dataObservable.subscribe((res: any) => {
@@ -65,12 +79,7 @@ export class TodolistComponent implements OnInit {
         }, () => {
           console.log("Comlpeted")
         }) */
-
-    this.todoService.createSelectArray()
-
-    setTimeout(() => {
-      this.todoService.loading = false
-    }, 700);
+        
 
   }
 
@@ -81,14 +90,17 @@ export class TodolistComponent implements OnInit {
     }
   }
 
+  //selector
   completed = [
     { key: 'All', status: 'All' },
     { key: 'Actual', status: 'Actual' },
     { key: 'Completed', status: 'Completed' }
   ]
 
+  //filter
   filter = ''
 
+  //async
   /*   change(status: string) {
       this.selected = status
     } */
@@ -105,15 +117,19 @@ export class TodolistComponent implements OnInit {
       this.todolistTimeout = sub
     }) */
 
-  stream$ = this.todoService.todoListObs$.subscribe({
-    next: v => v
-    // complete: () => console.log('Complete')
-  })
+  /*   stream$ = this.todoService.todoListObs$.subscribe({
+      next: v => console.log(v)
+    }) */
 
   /*   stream$ = this.todoService.arr$.subscribe({
       next: v => console.log(v),
       // complete: () => console.log('Complete')
     }) */
+
+  // arr$ = from(this.todoService.todoList)
+  // todostream = this.arr$.subscribe(sub => console.log(sub))
+
+  // todolistTimeout:any = this.todoService.todolistTimeout$.subscribe(sub => this.todolistTimeout = sub)
 
 }
 

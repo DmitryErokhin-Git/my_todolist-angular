@@ -1,21 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { FileSaverService } from 'ngx-filesaver';
 import { TodoService } from './todo.service';
 import * as XLSX from 'xlsx';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class IpmortExportService {
+export class IpmortExportService implements OnInit {
 
   constructor(
     private fileSaverService: FileSaverService,
     private todoService: TodoService,
     private _snackBar: MatSnackBar
   ) { }
+
+  ngOnInit() {
+  }
 
   fileName: any
 
@@ -60,7 +63,7 @@ export class IpmortExportService {
 
   }
 
-  selectStartDate =  new Date()
+  selectStartDate = new Date()
   selectEndDate = new Date()
 
   downloadListSelected() {
@@ -147,7 +150,7 @@ export class IpmortExportService {
     } else {
       this.openSnackBar('No tasks', 'OK')
     }
-    
+
   }
 
 }

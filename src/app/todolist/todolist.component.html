@@ -1,4 +1,18 @@
 <body>
+  
+  <!-- Local Storage -->
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Local Storage
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <button mat-raised-button color="accent" type="button" (click)="todoService.saveLocal()">Save</button>
+      <button mat-raised-button color="primary" type="button" (click)="todoService.loadLocal()">Load</button>
+      <button mat-raised-button color="warn" type="button" (click)="todoService.cleanLocal()">Clean</button>
+    </mat-expansion-panel>
+  </mat-accordion>
 
   <!-- ADD -->
   <div>
@@ -28,14 +42,14 @@
     <!-- ADD BUTTON-->
     <div>
       <button mat-raised-button color="accent" class="buttonAdd" type="button" (click)="addTask()">
-        Add new task</button>
+        Add new task(Enter)</button>
     </div>
 
   </div>
 
   <!-- FILTERS -->
   <div class="gridForm2">
-    
+
     <!-- SELECTOR -->
     <div>
 
@@ -53,7 +67,7 @@
     <!-- FILTER INPUT -->
     <div class="filterinput">
       <mat-form-field class="example-full-width">
-        <mat-label>Filter</mat-label>
+        <mat-label>Filter(Esc - clean)</mat-label>
         <input matInput [(ngModel)]="filter" placeholder="Enter a request" value="{{filter}}"
           (keydown.esc)="filter = ''">
       </mat-form-field>
@@ -101,6 +115,10 @@
   <div *ngIf="this.todoService.loading" class="loading">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
+
+  <ul>
+    <!-- <li *ngFor="let item of todostream | async | json">{{item}}</li> -->
+  </ul>
 
   <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
   </mat-paginator> -->
