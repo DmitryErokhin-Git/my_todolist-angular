@@ -33,7 +33,9 @@ ul {
 
 .gridForm1 {
   display: grid;
-  grid-template-columns: auto 25%;
+  /* grid-template-columns: auto 25% ; */
+  /* grid-template-columns: auto max-content ; */
+
   margin-top: 2%
 }
 
@@ -42,9 +44,9 @@ ul {
   grid-template-columns: 25% auto;
 }
 
-.addInput {
+/* .addInput {
   margin-right: 2%
-}
+} */
 
 .example-full-width {
   box-sizing: border-box;
@@ -69,11 +71,24 @@ ul {
   text-align: center
 }
 
-.loading p {
+/* .loading p {
   color: green;
   text-align: center
-}
+} */
 
 mat-accordion button {
   margin-right: 1%;
 }
+
+mat-card-content {
+  height: max-content;
+}
+
+mat-card-content h3 {
+  white-space: pre-wrap;
+  word-break:break-all;
+}
+
+/* .hidden {
+  display:none
+} */

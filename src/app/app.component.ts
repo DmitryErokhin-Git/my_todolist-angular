@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
       const raw: any = event.newValue
       const update: any = JSON.parse(raw)
       this.todoService.todoList = update
+      this.todoService.createSelectArray()
       // this.savetolocalstorageService.saveLocal()
       // this.savetolocalstorageService.loadLocal()
     })

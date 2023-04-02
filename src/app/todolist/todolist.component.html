@@ -1,7 +1,7 @@
 <body>
-  
+
   <!-- Local Storage -->
-  <mat-accordion>
+  <!--   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -12,40 +12,59 @@
       <button mat-raised-button color="primary" type="button" (click)="todoService.loadLocal()">Load</button>
       <button mat-raised-button color="warn" type="button" (click)="todoService.cleanLocal()">Clean</button>
     </mat-expansion-panel>
-  </mat-accordion>
+  </mat-accordion> -->
 
   <!-- ADD -->
-  <div>
-    <div class="gridForm1">
 
-      <!-- ADD INPUT -->
-      <div class="addInput">
-        <mat-form-field class="example-full-width">
-          <mat-label>Create task</mat-label>
-          <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}"
-            (keydown.enter)="addTask()">
-        </mat-form-field>
-      </div>
-
-      <!-- ADD DATE-->
+  <mat-accordion>
+    <mat-expansion-panel style="margin-bottom: 2%;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Add tasks
+        </mat-panel-title>
+      </mat-expansion-panel-header>
       <div>
-        <mat-form-field appearance="fill" calss="example-full-width addDatePicker" style="display: flex">
-          <mat-label>Date new task</mat-label>
-          <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <div class="gridForm1">
+    
+          <!-- ADD INPUT -->
+          <div class="addInput">
+            <mat-form-field class="example-full-width">
+              <mat-label>Create task</mat-label>
+              <input matInput [(ngModel)]="inputText" placeholder="New task" value="{{inputText}}"
+                (keydown.enter)="addTask()">
+            </mat-form-field>
+          </div>
+    
+          <!-- ADD DATE-->
+          <!-- <div> -->
+          <!-- <div style="width: max-content;"> -->
+          <!-- <div class="hidden"> -->
+          <!-- <mat-form-field appearance="fill" calss="example-full-width addDatePicker" style="display: flex">
+              <mat-label>Date new task</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="todoService.addData">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div> -->
+    
+          <!-- <button style="height: 75%;" mat-raised-button (click)="picker.open()"><mat-icon>date_range</mat-icon></button> -->
+    
+          <!-- </div> -->
+    
+        </div>
+    
+        <!-- ADD BUTTON-->
+        <div>
+          <button mat-raised-button color="accent" class="buttonAdd" type="button" (click)="addTask()">
+            Add new task("Enter" to add)</button>
+        </div>
+    
       </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-    </div>
 
-    <!-- ADD BUTTON-->
-    <div>
-      <button mat-raised-button color="accent" class="buttonAdd" type="button" (click)="addTask()">
-        Add new task(Enter)</button>
-    </div>
 
-  </div>
 
   <!-- FILTERS -->
   <div class="gridForm2">
@@ -67,7 +86,7 @@
     <!-- FILTER INPUT -->
     <div class="filterinput">
       <mat-form-field class="example-full-width">
-        <mat-label>Filter(Esc - clean)</mat-label>
+        <mat-label>Filter("Esc" to reset)</mat-label>
         <input matInput [(ngModel)]="filter" placeholder="Enter a request" value="{{filter}}"
           (keydown.esc)="filter = ''">
       </mat-form-field>
@@ -91,7 +110,7 @@
             <div>
               <mat-slide-toggle [checked]="item.completed"
                 (change)="this.todoService.changeComplete(item)"></mat-slide-toggle>
-              №{{i+1}} {{item.date | date: "d MMMM yyyy, HH:mm:ss"}}
+              №{{i+1}} {{item.date | date: "d.MM.yyyy, HH:mm:ss"}}
             </div>
             <div>
               <button mat-raised-button color="warn" type="button"
@@ -116,9 +135,9 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 
-  <ul>
-    <!-- <li *ngFor="let item of todostream | async | json">{{item}}</li> -->
-  </ul>
+  <!-- <ul> -->
+  <!-- <li *ngFor="let item of todostream | async | json">{{item}}</li> -->
+  <!-- </ul> -->
 
   <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
   </mat-paginator> -->

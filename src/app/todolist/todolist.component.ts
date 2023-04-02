@@ -44,6 +44,8 @@ export class TodolistComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+    
+    this.todoService.loadLocal()
 
     // JSON
     // this.mytodolistjson = (todolistjson as any).default;
@@ -80,7 +82,6 @@ export class TodolistComponent implements OnInit {
           console.log("Comlpeted")
         }) */
         
-
   }
 
   addTask() {

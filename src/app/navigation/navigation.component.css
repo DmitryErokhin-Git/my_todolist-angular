@@ -17,13 +17,13 @@
   border-bottom: 1px solid rgb(80, 80, 80);
 }
 
-.activeLink {
+/* .activeLink {
   color: red;
 }
 
 .mat-nav-list a.active {
   background: blue;
-}
+} */
 
 .active-link {
   background-color: #7b1fa2;

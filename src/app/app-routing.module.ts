@@ -6,17 +6,17 @@ import { ImportExportComponent } from './import-export/import-export.component';
 import { TodolistComponent } from './todolist/todolist.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'todo', pathMatch: 'full' },
+  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
   {
-    path: 'todo',
+    path: 'tasks',
     children: [
       { path: '', component: TodolistComponent },
-      { path: 'actual', component: ActualComponent },
-      { path: 'completed', component: CompletedComponent },
+      // { path: 'actual', component: ActualComponent },
+      // { path: 'completed', component: CompletedComponent },
     ]
   },
-  { path: 'impex', component: ImportExportComponent },
-  { path: '**', redirectTo: 'todo' }
+  { path: 'import-export', component: ImportExportComponent },
+  { path: '**', redirectTo: 'tasks' }
 ];
 
 @NgModule({

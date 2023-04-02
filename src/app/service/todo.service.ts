@@ -19,22 +19,22 @@ export class TodoService implements OnInit {
   todoList: Itemtodo[] = [
     {
       id: 1679915426657,
-      text: 'string',
+      text: 'Task №1 is actual',
       date: new Date(),
       completed: false
     },
     {
       id: 1679915426658,
-      text: 'string 2',
+      text: 'Task №2 is compleated',
       date: new Date(),
       completed: true
-    },
+    }/* ,
     {
       id: 1679915426659,
       text: 'string 3',
       date: new Date(),
       completed: false
-    }
+    } */
   ]
 
   addData = new Date()
@@ -48,19 +48,19 @@ export class TodoService implements OnInit {
       completed: false
     }
     this.todoList.push(item)
-    // this.saveLocal()
+    this.saveLocal()
     this.createSelectArray()
   }
 
   changeComplete(item: Itemtodo) {
     item.completed = !item.completed
-    // this.saveLocal()
+    this.saveLocal()
     this.createSelectArray()
   }
 
   delTask(id: number) {
     this.todoList = this.todoList.filter(item => item.id != id)
-    // this.saveLocal()
+    this.saveLocal()
     this.createSelectArray()
   }
 
@@ -74,15 +74,19 @@ export class TodoService implements OnInit {
   }
 
   loadLocal() {
-    const loadJson: any = localStorage.getItem('todoList')
-    // console.log(loadJson)
-    this.todoList = JSON.parse(loadJson)
-    // console.log(this.data)
+    if (localStorage.getItem('todoList')) {
+      const loadJson: any = localStorage.getItem('todoList')
+      // console.log(loadJson)
+      this.todoList = JSON.parse(loadJson)
+      // console.log(this.data)
+      this.createSelectArray()
+    }
   }
 
   cleanLocal() {
     this.todoList = []
     this.saveLocal()
+    this.createSelectArray()
   }
 
   loading = true
@@ -91,28 +95,31 @@ export class TodoService implements OnInit {
   selected = 'All'
 
   selectPipe = new SelectPipe();
-  selectedArr: any[] = []
+  selectedArr: Itemtodo[] = []
 
   createSelectArray() {
+    // if (this.todoList.length != 0) {
     this.selectedArr = this.selectPipe.transform(this.todoList, this.selected);
+    // }
+    // return null
   }
 
   //async
   // arr$ = of(this.todoList).subscribe(sub => sub)
 
- /*  todoListObs$ = new Observable((observer: any) => {
+  /*  todoListObs$ = new Observable((observer: any) => {
+ 
+     for (let i = 0; i < this.todoList.length; i++) {
+       // setTimeout(() => { observer.next(this.todoList[i]) }, 1000 * i);
+       observer.next(this.todoList[i])
+     }
+   }) */
 
-    for (let i = 0; i < this.todoList.length; i++) {
-      // setTimeout(() => { observer.next(this.todoList[i]) }, 1000 * i);
-      observer.next(this.todoList[i])
-    }
-  }) */
-
-    todolistTimeout$ = new Observable((observ) => {
-      // observ.next(this.loading = true)
-      // setTimeout(() => { observ.next(this.loading = false) }, 700)
-      setTimeout(() => { observ.next(this.todoList) }, 700)
-      // setTimeout(() => { observ.complete() }, 1500)
-    })
+  todolistTimeout$ = new Observable((observ) => {
+    // observ.next(this.loading = true)
+    // setTimeout(() => { observ.next(this.loading = false) }, 700)
+    setTimeout(() => { observ.next(this.todoList) }, 700)
+    // setTimeout(() => { observ.complete() }, 1500)
+  })
 
 }

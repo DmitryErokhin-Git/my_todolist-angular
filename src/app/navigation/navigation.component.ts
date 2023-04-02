@@ -11,8 +11,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class NavigationComponent {
 
-  activeLink = false
-  noActiveLink = true
+  // activeLink = false
+  // noActiveLink = true
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,7 +22,8 @@ export class NavigationComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private appComponent: AppComponent) { }
+    private appComponent: AppComponent
+  ) { }
 
   title = this.appComponent.title
 
